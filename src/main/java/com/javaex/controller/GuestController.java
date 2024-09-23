@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.javaex.service.GuestbookService;
@@ -24,6 +26,19 @@ public class GuestController {
 		System.out.println(guestList);
 		return guestList;
 	}
+	
+	@PostMapping("/api/guestbooks")
+	public String write(@RequestBody GuestVo geustVo) {
+
+//		int count = phonebookDao.insertPerson(personVo);
+		guestbookService.exeWrite(geustVo);
+//		System.out.println(count);
+
+		return "redirect:/";
+	}
+	
+	
+	
 	
 	
 }
